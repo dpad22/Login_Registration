@@ -1,0 +1,16 @@
+.col{
+    display: inline-block;
+    width: 50%;
+}
+
+input {
+    width: 100px;
+}
+
+.form-control{
+    width: 65%;
+}
+
+.col-form-label{
+    padding-right: 0px;
+}

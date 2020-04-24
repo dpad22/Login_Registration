@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- bootstrap linked -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>Login & Registration</title>
+</head>
+<body>
+
+<div class="container text-center ">
+    <div class="row">
+        <div class="col">
+            
+            <h1>Registration</h1>
+
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                {% if "register" in message.tags %}
+                <li style="color: red;">{{ message }}</li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+            <form action="/register_user" name="registered" method="POST">
+                {% csrf_token %}
+<!-- create first name -->
+                <div class="form-group row">
+                    <label for="first_name" class="col-sm-2 col-form-label">First Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name">
+                    </div>
+                </div>
+<!-- create last name -->
+                <div class="form-group row">
+                    <label for="last_name" class="col-sm-2 col-form-label">Last Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name">
+                    </div>
+                </div>
+<!-- register email -->
+                <div class="form-group row">
+                    <label for="reg_email" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="reg_email" name="reg_email" placeholder="Email">
+                    </div>
+                </div>
+<!-- create birthdate -->
+                <div class="form-group row">
+                    <label for="bday" class="col-sm-2 col-form-label">Date of Birth</label>
+                    <div class="col-sm-10">
+                        <input type="date" class="form-control" id="bday" name="bday">
+                    </div>
+                </div>
+<!-- create password -->
+                <div class="form-group row">
+                    <label for="reg_pw" class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" name="reg_pw" id="reg_pw" placeholder="Password">
+                    </div>
+                </div>
+<!-- confirm password -->
+                <div class="form-group row">
+                    <label for="confirm_pw" class="col-sm-2 col-form-label">Confirm Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="confirm_pw" name="confirm_pw" placeholder="Confirm Password">
+                    </div>
+                </div>
+<!-- submit button - Register a new user -->
+                <button type="submit">Register</button>
+
+            </form>
+
+        </div>
+        <div class="col">
+
+            <h1>Login</h1>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                {% if "login" in message.tags %}
+                <li style="color: red;">{{ message }}</li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+            {% endif %}
+            
+            
+            <form action="/log_In" name="log_In" method="POST">
+                {% csrf_token %}
+
+<!-- user login - email -->
+
+
+
+                <div class="form-group row">
+                    <label for="login_email" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="login_email" name="login_email" placeholder="Email">
+                    </div>
+                </div>
+<!-- user login - password -->
+                <div class="form-group row">
+                    <label for="login_pw" class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="login_pw" name="login_pw" placeholder="Password">
+                    </div>
+                </div>
+
+                <button type="submit">Log In</button>
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+
+<!-- JS Scripts for Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
